@@ -14,7 +14,7 @@ int main () {
     cout << endl;
 
     cout << "pattern two!" << endl;
-    for (int row = 10; row <= 1; row--) {
+    for (int row = 10; row >= 1; row--) {
         for (int col = 1; col <= row; col++) {
             cout << "x";
         }
