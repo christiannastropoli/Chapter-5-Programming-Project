@@ -6,43 +6,33 @@ using namespace std;
 
 int main() {
     ifstream inputFile;
-    string name;
-    string smallest;
-    string largest;
-    int count = 0;
+    string nameFile;
+    string nameTown;
+    int population;
+    int year = 1900;
 
-    inputFile.open("LineUp.txt");
+    cout << "enter file name: ";
+    cin >> nameFile;
+    cout << "enter town name: ";
+    cin.ignore();
+    getline(cin, nameTown);
 
+    inputFile.open(nameFile);
     if (!inputFile) {
-        cout << "cannot access file." << endl;
+        cout << "cannot access file.";
         return 0;
     }
+    cout << "\n" << nameTown << " population over the years." << endl;
+    cout << "each x 1000 people!" << endl;
 
-    
-    inputFile >> name;
-    
-    smallest = name;
-    largest = name;
-    
-    count = 1;
-
-    while (inputFile >> name) {
-        count++;
-
-        if (name < smallest) {
-            smallest = name;
+    while (inputFile >> population) {
+        cout << year << " ";
+        for (int i = 0; i < population / 1000; i++) {
+            cout << "x";
         }
-
-        if (name > largest) {
-            largest = name;
-        }
+        cout << endl;
+        year += 20;
     }
-
     inputFile.close();
-
-    cout << "# of students: " << count << endl;
-    cout << "student at the front of the line: " << smallest << endl;
-    cout << "student at the end of the line: " << largest << endl;
-
     return 0;
-}
+    }
