@@ -17,17 +17,15 @@ int main () {
 
     while (guess != randoNumber) {
         if (guess > randoNumber) {
-            cout << " too high! try again: ";
+            cout << "too high! try again: ";
             cin >> guess;
         }
         else {
-            cout << " too low! try again: ";
+            cout << "too low! try again: ";
             cin >> guess;
         }
-        cout << "what's your guess? ";
-        cin >> guess;
         tries++;
     }
-    cout << "you got it! it took " << tries << endl;
+    cout << "you got it! it took " << tries << " tries!"<< endl;
     return 0;
 }
