@@ -1,24 +1,33 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 int main () {
-    cout << "pattern one!" << endl;
+    int randoNumber;
+    int guess;
+    int tries = 0;
 
-    for (int row = 1; row <= 10; row++) {
-        for (int col = 1; col <= row; col++) {
-            cout << "x";
-        }
-        cout << endl;
-    }
-    cout << endl;
+    srand(time(0));
+    randoNumber = rand() % 100 + 1;
+    cout << "guess a number between 1 and 100: ";
+    cin >> guess;
+    tries++;
 
-    cout << "pattern two!" << endl;
-    for (int row = 10; row >= 1; row--) {
-        for (int col = 1; col <= row; col++) {
-            cout << "x";
+    while (guess != randoNumber) {
+        if (guess > randoNumber) {
+            cout << " too high! try again: ";
+            cin >> guess;
         }
-        cout << endl;
+        else {
+            cout << " too low! try again: ";
+            cin >> guess;
+        }
+        cout << "what's your guess? ";
+        cin >> guess;
+        tries++;
     }
+    cout << "you got it! it took " << tries << endl;
     return 0;
 }
