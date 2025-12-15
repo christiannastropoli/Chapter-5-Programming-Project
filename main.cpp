@@ -30,7 +30,8 @@ int main () {
   cout << "-----------------\n";
   for (int day = 1; day <= days; day++) {
     cout << day << "\t" << population << endl;
-    population = population + (population * daysIncrease);
+    population = population + population + (population * daysIncrease);
   }
   return 0;
+  
 }
