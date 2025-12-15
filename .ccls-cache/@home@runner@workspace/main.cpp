@@ -1,37 +1,47 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+
 using namespace std;
 
-int main () {
-  int days;
-  double population;
-  double percent;
-  double daysIncrease;
+int main() {
+    ifstream inputFile;
+    string name;
+    string smallest;
+    string largest;
+    int count = 0;
 
-  cout << "enter the base population: ";
-  cin >> population;
-  while (population < 2) {
-    cout << "please enter a number greater than 2: ";
-    cin >> population;
-  }
-  cout << "enter the daily incoming population: ";
-  cin >> percent;
-  while (percent < 0) {
-    cout << "please enter a positive number: ";
-    cin >> percent;
-  }
-  cout << "enter the number of days: ";
-  cin >> days;
-  while (days < 1) {
-    cout << "please enter a number greater than 1: ";
-    cin >> days;
-  }
-  daysIncrease = percent / 100.0;
-  cout << "\nday\tpopulation\n";
-  cout << "-----------------\n";
-  for (int day = 1; day <= days; day++) {
-    cout << day << "\t" << population << endl;
-    population = population + population + (population * daysIncrease);
-  }
-  return 0;
-  
+    inputFile.open("LineUp.txt");
+
+    if (!inputFile) {
+        cout << "cannot access file." << endl;
+        return 0;
+    }
+
+    inputFile >> name;
+    
+    smallest = name;
+    largest = name;
+    
+    count = 1;
+
+    while (inputFile >> name) {
+        count++;
+
+        if (name < smallest) {
+            smallest = name;
+        }
+
+        if (name > largest) {
+            largest = name;
+        }
+    }
+
+    inputFile.close();
+
+    cout << "# of students: " << count << endl;
+    cout << "student at the front of the line: " << smallest << endl;
+    cout << "student at the end of the line: " << largest << endl;
+
+    return 0;
 }
